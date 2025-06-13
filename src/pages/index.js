@@ -1,21 +1,23 @@
 import { getOpportunities } from '../lib/contentful';
 import Layout from '../components/Layout';
 import OpportunityCard from '../components/OpportunityCard';
+import styles from '../styles/Home.module.css';
 
 export default function Home({ opportunities }) {
   return (
     <Layout>
-      <section>
+      <section className={styles.hero}>
         <h1>Welcome to Opportunity Board</h1>
         <p>Discover grants, research opportunities, fellowships, and conferences.</p>
       </section>
-      <section>
+      <section className={styles.opportunitiesGrid}>
         {opportunities.map((opportunity) => (
           <OpportunityCard
             key={opportunity.slug}
             title={opportunity.title}
-            description={opportunity.description}
-            link={`/opportunities/${opportunity.slug}`}
+            image={opportunity.image}
+            publishedDate={opportunity.publishedDate}
+            slug={opportunity.slug}
           />
         ))}
       </section>
@@ -25,5 +27,8 @@ export default function Home({ opportunities }) {
 
 export async function getStaticProps() {
   const opportunities = await getOpportunities();
-  return { props: { opportunities } };
+  return { 
+    props: { opportunities },
+    revalidate: 3600 // Revalidate every hour
+  };
 }
