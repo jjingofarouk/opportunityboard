@@ -1,6 +1,9 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.ctfassets.net'], // Add Contentful's asset domain
+    domains: ['images.ctfassets.net'], // Contentful's asset domain
   },
 };
+
+module.exports = nextConfig;
