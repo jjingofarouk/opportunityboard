@@ -11,7 +11,7 @@ export default function OpportunityDetails({ opportunity }) {
       <p>Category: {opportunity.category}</p>
       <p>Location: {opportunity.location}</p>
       <p>Eligibility: {opportunity.eligibility}</p>
-      <p>Tags: {opportunity.tags?.join(', ')}</p>
+      <p>tag: {opportunity.tag?.join(', ')}</p>
       <p>Published Date: {opportunity.publishedDate}</p>
       <p>Organizer: {opportunity.organizerName}</p>
       <p>Application Process: {opportunity.applicationProcess}</p>
