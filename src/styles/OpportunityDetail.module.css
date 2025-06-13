@@ -1,0 +1,286 @@
+/* styles/OpportunityDetail.module.css */
+.wrapper {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.heroSection {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.coverImage {
+  object-fit: cover;
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.placeholderIcon {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: -80px auto 0;
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.category {
+  display: inline-block;
+  background: #818cf8;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: 0.025em;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #0f172a;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+.metadataCard {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.metaItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.metaItem:first-child {
+  padding-top: 0;
+}
+
+.metaIcon {
+  color: #6366f1;
+  width: 24px;
+  height: 24px;
+}
+
+.metaContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metaLabel {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.metaValue {
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.primaryButton, .secondaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 500;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.primaryButton {
+  background: #6366f1;
+  color: white;
+}
+
+.primaryButton:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.secondaryButton:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.mainContent {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.section p {
+  color: #475569;
+  line-height: 1.8;
+  font-size: 1.125rem;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .actions {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    margin-top: -40px;
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    flex-direction: row;
+  }
+
+  .primaryButton, .secondaryButton {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageWrapper {
+    height: 300px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .heroContent {
+    background: white;
+  }
+}
