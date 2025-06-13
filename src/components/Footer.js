@@ -1,16 +1,14 @@
+// components/Footer.js
 import styles from '../styles/Footer.module.css';
-import { Github, Twitter, Mail, Heart } from 'lucide-react';
+import { Github, Twitter, LinkedIn, Heart } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.footerSection}>
           <h3>Opportunity Board</h3>
-          <p>Discover global opportunities for academic and professional growth.</p>
           <div className={styles.socials}>
             <Link href="https://github.com/jjingofarouk" aria-label="GitHub">
               <Github size={20} />
@@ -18,32 +16,36 @@ export default function Footer() {
             <Link href="https://twitter.com" aria-label="Twitter">
               <Twitter size={20} />
             </Link>
-            <Link href="mailto:contact@example.com" aria-label="Email">
-              <Mail size={20} />
+            <Link href="https://linkedin.com" aria-label="LinkedIn">
+              <LinkedIn size={20} />
             </Link>
           </div>
         </div>
 
         <div className={styles.footerSection}>
           <h4>Quick Links</h4>
-          <Link href="/grants">Grants</Link>
-          <Link href="/conferences">Conferences</Link>
-          <Link href="/scholarships">Scholarships</Link>
-          <Link href="/workshops">Workshops</Link>
+          <nav className={styles.footerNav}>
+            <Link href="/grants">Grants</Link>
+            <Link href="/conferences">Conferences</Link>
+            <Link href="/scholarships">Scholarships</Link>
+            <Link href="/fellowships">Fellowships</Link>
+          </nav>
         </div>
 
         <div className={styles.footerSection}>
           <h4>Resources</h4>
-          <Link href="/about">About Us</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/privacy">Privacy Policy</Link>
-          <Link href="/terms">Terms of Use</Link>
+          <nav className={styles.footerNav}>
+            <Link href="/about">About</Link>
+            <Link href="/contact">Contact</Link>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+          </nav>
         </div>
       </div>
-
+      
       <div className={styles.footerBottom}>
-        <p>Made with <Heart size={16} /> in Uganda</p>
-        <p>&copy; {currentYear} Opportunity Board</p>
+        <p>Built with <Heart size={16} className={styles.heartIcon} /> in Uganda</p>
+        <p>&copy; {new Date().getFullYear()} Opportunity Board</p>
       </div>
     </footer>
   );
