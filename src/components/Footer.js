@@ -17,7 +17,7 @@ export default function Footer() {
               <Twitter size={20} />
             </Link>
             <Link href="https://linkedin.com" aria-label="LinkedIn">
-              <LinkedIn size={20} />
+              <Linkedin size={20} />
             </Link>
           </div>
         </div>
