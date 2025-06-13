@@ -1,6 +1,6 @@
 // components/Footer.js
 import styles from '../styles/Footer.module.css';
-import { Github, Twitter, LinkedIn, Heart } from 'lucide-react';
+import { Github, Twitter, Linkedin, Heart } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
