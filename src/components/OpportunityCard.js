@@ -19,7 +19,7 @@ export default function OpportunityCard({
     });
   };
 
-  const fallbackImage = '/images/placeholder.jpg';
+  const fallbackImage = '/images/placeholder.jpeg';
 
   return (
     <Link href={`/opportunities/${slug}`} className={styles.cardLink}>
