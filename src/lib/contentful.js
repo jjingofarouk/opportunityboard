@@ -7,7 +7,7 @@ const client = createClient({
 
 // Get all opportunities with all relevant fields
 export async function getOpportunities() {
-  const entries = await client.getEntries({ content_type: 'opportunity' });
+  const entries = await client.getEntries({ content_type: 'blogPost' });
   return entries.items.map((item) => ({
     slug: item.fields.slug,
     title: item.fields.title,
@@ -29,7 +29,7 @@ export async function getOpportunities() {
 // Get all slugs for dynamic routes
 export async function getAllSlugs() {
   const entries = await client.getEntries({
-    content_type: 'opportunity',
+    content_type: 'blogPost',
     select: 'fields.slug',
   });
   return entries.items.map((item) => item.fields.slug);
@@ -38,7 +38,7 @@ export async function getAllSlugs() {
 // Get a single opportunity by slug, with all fields
 export async function getOpportunityBySlug(slug) {
   const entries = await client.getEntries({
-    content_type: 'opportunity',
+    content_type: 'blogPost',
     'fields.slug': slug,
     limit: 1,
   });
