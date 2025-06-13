@@ -32,7 +32,6 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
       const visible = prevScrollPos > currentScrollPos || currentScrollPos < 10;
-
       setPrevScrollPos(currentScrollPos);
       setVisible(visible);
     };
@@ -43,19 +42,11 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    if (!isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isOpen ? 'unset' : 'hidden';
   };
 
   return (
-    <nav 
-      className={`${styles.navbar} ${!visible ? styles.hidden : ''} ${
-        isOpen ? styles.navbarOpen : ''
-      }`}
-    >
+    <nav className={`${styles.navbar} ${!visible ? styles.hidden : ''}`}>
       <div className={styles.navbarContent}>
         <div className={styles.logo}>
           <Link href="/">
@@ -63,37 +54,30 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <button 
-          className={styles.hamburger} 
+        <div className={`${styles.navLinks} ${isOpen ? styles.show : ''}`}>
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className={styles.navLink}
+              >
+                <Icon size={18} />
+                <span>{item.name}</span>
+              </Link>
+            );
+          })}
+        </div>
+
+        <button
+          className={styles.hamburger}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          {isOpen ? (
-            <X size={24} />
-          ) : (
-            <Menu size={24} />
-          )}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-
-        <div className={`${styles.menuOverlay} ${isOpen ? styles.show : ''}`}>
-          <ul className={styles.navLinks}>
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <li key={item.name}>
-                  <Link 
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={styles.navLink}
-                  >
-                    <Icon size={20} />
-                    <span>{item.name}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
       </div>
     </nav>
   );
