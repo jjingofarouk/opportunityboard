@@ -3,7 +3,7 @@ import { Clock } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function OpportunityCard({ 
+export default function OpportunityCard({
   title,
   description,
   image,
@@ -28,8 +28,8 @@ export default function OpportunityCard({
           <Image
             src={image || fallbackImage}
             alt={title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            width={80} // Square image
+            height={80} // Square image
             className={styles.image}
             onError={(e) => {
               e.target.src = fallbackImage;
@@ -39,17 +39,12 @@ export default function OpportunityCard({
         
         <div className={styles.content}>
           <h2 className={styles.title}>{title}</h2>
-          
           {description && (
-            <p className={styles.description}>
-              {description.substring(0, 100)}
-              {description.length > 100 ? '...' : ''}
-            </p>
+            <p className={styles.description}>{description}</p>
           )}
-          
           {publishedDate && (
             <div className={styles.publishedDate}>
-              <Clock size={16} />
+              <Clock size={14} />
               <span>{formatDate(publishedDate)}</span>
             </div>
           )}
