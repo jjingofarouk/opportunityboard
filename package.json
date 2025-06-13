@@ -1,0 +1,25 @@
+{
+  "name": "opportunityboard",
+  "version": "1.0.0",
+  "description": "A Next.js web application for tracking grants, research opportunities, and fellowships.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "contentful": "^9.3.1",
+    "next": "13.4.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.4.3"
+  },
+  "keywords": ["grants", "fellowships", "nextjs", "opportunity-tracker"],
+  "author": "jjingofarouk",
+  "license": "MIT"
+}
