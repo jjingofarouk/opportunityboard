@@ -1,38 +1,102 @@
+/* styles/Home.module.css */
 .hero {
   text-align: center;
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
-  background: #f8fafc;
-  border-radius: 12px;
+  padding: 4rem 1rem;
+  background: linear-gradient(to right, #1a365d, #2a4365);
+  color: white;
+  margin-bottom: 3rem;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
-  color: #1a202c;
+  font-size: 3rem;
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .hero p {
-  font-size: 1.125rem;
-  color: #4a5568;
+  font-size: 1.25rem;
+  color: #e2e8f0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.categories {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.categoryCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.categoryCard:hover {
+  transform: translateY(-5px);
+}
+
+.categoryCard h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #2d3748;
+}
+
+.latestOpportunities {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.latestOpportunities h2 {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .opportunitiesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 0 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 3rem 1rem;
+  }
+
   .hero h1 {
     font-size: 2rem;
   }
-  
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .categoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .opportunitiesGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryGrid {
+    grid-template-columns: 1fr;
   }
 }
