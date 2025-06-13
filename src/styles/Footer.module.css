@@ -117,16 +117,3 @@
     padding: 1.5rem;
   }
 }
-
-/* Make sure the footer sticks to the bottom */
-:global(body) {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-:global(#__next) {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
