@@ -1,17 +1,12 @@
 import styles from '../styles/OpportunityCard.module.css';
-import { Calendar, MapPin, Tag, Clock, Building, Mail } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function OpportunityCard({ 
   title,
-  description,
-  deadline,
-  category,
-  location,
-  tag,
+  image,
   publishedDate,
-  organizerName,
-  contactEmail,
   slug
 }) {
   // Format date function
@@ -27,77 +22,32 @@ export default function OpportunityCard({
   return (
     <Link href={`/opportunity/${slug}`} className={styles.cardLink}>
       <div className={styles.card}>
-        {/* Category and Tags Section */}
-        <div className={styles.cardHeader}>
-          {category && (
-            <span className={styles.category}>
-              {category}
-            </span>
-          )}
-          {tag && tag.length > 0 && (
-            <div className={styles.tags}>
-              {tag.slice(0, 2).map((t, index) => (
-                <span key={index} className={styles.tag}>
-                  <Tag size={14} />
-                  {t}
-                </span>
-              ))}
-              {tag.length > 2 && (
-                <span className={styles.tagCount}>+{tag.length - 2}</span>
-              )}
+        <div className={styles.imageContainer}>
+          {image ? (
+            <Image
+              src={image}
+              alt={title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className={styles.image}
+            />
+          ) : (
+            <div className={styles.placeholderImage}>
+              <span>No Image Available</span>
             </div>
           )}
         </div>
-
-        {/* Title and Description */}
-        <h2 className={styles.title}>{title}</h2>
-        {description && (
-          <p className={styles.description}>
-            {description.length > 150 
-              ? `${description.substring(0, 150)}...` 
-              : description}
-          </p>
-        )}
-
-        {/* Meta Information */}
-        <div className={styles.metaInfo}>
-          {organizerName && (
-            <div className={styles.metaItem}>
-              <Building size={16} />
-              <span>{organizerName}</span>
-            </div>
-          )}
-          {location && (
-            <div className={styles.metaItem}>
-              <MapPin size={16} />
-              <span>{location}</span>
-            </div>
-          )}
-        </div>
-
-        {/* Footer Information */}
-        <div className={styles.cardFooter}>
-          {deadline && (
-            <div className={styles.deadline}>
-              <Calendar size={16} />
-              <span>Deadline: {formatDate(deadline)}</span>
-            </div>
-          )}
+        
+        <div className={styles.content}>
+          <h2 className={styles.title}>{title}</h2>
+          
           {publishedDate && (
-            <div className={styles.published}>
+            <div className={styles.publishedDate}>
               <Clock size={16} />
-              <span>Posted: {formatDate(publishedDate)}</span>
+              <span>{formatDate(publishedDate)}</span>
             </div>
           )}
         </div>
-
-        {/* Contact Information */}
-        {contactEmail && (
-          <div className={styles.contactInfo}>
-            <Mail size={16} />
-            <span>{contactEmail}</span>
-          </div>
-        )}
       </div>
     </Link>
   );
