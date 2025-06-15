@@ -1,6 +1,6 @@
 .hero {
   text-align: center;
-  padding: var(--space-3) var(--space-1);
+  padding: 0;
   background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
   color: var(--color-text);
 }
