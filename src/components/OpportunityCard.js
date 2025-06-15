@@ -1,22 +1,12 @@
-// components/OpportunityCard.js
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/OpportunityCard.module.css';
 
 export default function OpportunityCard({ title, description, image, publishedDate, slug }) {
-  // Truncate description to ~100 characters or first two sentences
+  // Truncate description to ~80 characters
   const truncateDescription = (text) => {
     if (!text) return '';
-
-    // Split by sentences (using periods followed by space or end of string)
-    const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
-    const firstTwoSentences = sentences.slice(0, 2).join(' ');
-
-    // If the first two sentences are too long, truncate to 100 characters
-    if (firstTwoSentences.length > 100) {
-      return firstTwoSentences.substring(0, 100) + '...';
-    }
-    return firstTwoSentences;
+    return text.length > 80 ? `${text.substring(0, 80)}...` : text;
   };
 
   return (
@@ -27,9 +17,8 @@ export default function OpportunityCard({ title, description, image, publishedDa
             src={image}
             alt={title}
             fill
-            sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, 33vw"
             className={styles.image}
-            priority={false}
           />
         ) : (
           <div className={styles.placeholderImage}>No Image</div>
@@ -40,9 +29,9 @@ export default function OpportunityCard({ title, description, image, publishedDa
         <p className={styles.description}>{truncateDescription(description)}</p>
         <p className={styles.date}>
           {new Date(publishedDate).toLocaleDateString('en-US', {
-            year: 'numeric',
             month: 'short',
             day: 'numeric',
+            year: 'numeric',
           })}
         </p>
       </div>
