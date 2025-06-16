@@ -1,4 +1,4 @@
-import { getOpportunityBySlug, getAllSlugs } from '../../lib
+import { getOpportunityBySlug, getAllSlugs } from '../../lib/contentful;
 import styles from '../../styles/OpportunityDetail.module.css';
 import { 
   Calendar, 
