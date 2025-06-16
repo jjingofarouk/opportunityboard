@@ -1,5 +1,4 @@
-import { getOpportunityBySlug, getAllSlugs } from '../../lib/contentful';
-import Layout from '../../components/Layout';
+import { getOpportunityBySlug, getAllSlugs } from '../../lib
 import styles from '../../styles/OpportunityDetail.module.css';
 import { 
   Calendar, 
@@ -29,7 +28,6 @@ export default function OpportunityDetail({ opportunity }) {
   };
 
   return (
-    <Layout>
       <div className={styles.wrapper}>
         <article className={styles.container}>
           <div className={styles.heroSection}>
@@ -162,7 +160,6 @@ export default function OpportunityDetail({ opportunity }) {
           </div>
         </article>
       </div>
-    </Layout>
   );
 }
 
