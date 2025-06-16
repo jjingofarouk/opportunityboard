@@ -1,11 +1,9 @@
 import { getOpportunities } from '../lib/contentful';
-import Layout from '../components/Layout';
 import OpportunityCard from '../components/OpportunityCard';
 import styles from '../styles/Home.module.css';
 
 export default function Home({ opportunities }) {
   return (
-    <Layout>
       <main className={styles.main}>
         {/* Hero Section */}
         <section className={styles.hero}>
@@ -56,7 +54,6 @@ export default function Home({ opportunities }) {
           </div>
         </section>
       </main>
-    </Layout>
   );
 }
 
