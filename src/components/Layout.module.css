@@ -1,0 +1,134 @@
+/* Layout Container */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--color-background, #ffffff);
+  color: var(--color-text, #333333);
+}
+
+/* Main Content Area */
+.main {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  background-color: var(--color-background, #ffffff);
+}
+
+/* Skip to main content link for accessibility */
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary, #3b82f6);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 6px;
+  z-index: 1000;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.skipLink:focus {
+  top: 6px;
+}
+
+/* Loading state */
+.layout[data-loading="true"] {
+  cursor: wait;
+}
+
+.layout[data-loading="true"] * {
+  pointer-events: none;
+}
+
+/* Container utility class that can be used in child components */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+/* Responsive Design */
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+    padding: 0 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+  
+  .main {
+    padding-top: 0;
+  }
+}
+
+/* Mobile Large */
+@media (min-width: 640px) and (max-width: 767px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .main {
+    padding-top: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 639px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .main {
+    padding-top: 0;
+  }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 2rem;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .layout {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Print styles */
+@media print {
+  .layout {
+    background: white;
+    color: black;
+  }
+  
+  .main {
+    padding: 0;
+  }
+}
