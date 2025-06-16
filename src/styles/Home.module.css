@@ -1,88 +1,258 @@
+/* Main container */
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container for consistent max-width and padding */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+/* Hero Section */
 .hero {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: white;
+  padding: 4rem 0;
   text-align: center;
-  padding: 0;
-  background: linear-gradient(to right, var(--color-primary), var(--color-primary-dark));
-  color: var(--color-text);
+  position: relative;
+  overflow: hidden;
 }
 
-.hero h1 {
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.heroDescription {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Section Titles */
+.sectionTitle {
   font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-bottom: var(--space-1);
+  font-weight: 600;
+  color: var(--color-text, #333);
+  margin-bottom: 2rem;
+  text-align: center;
+  line-height: 1.3;
 }
 
-.hero p {
-  font-size: clamp(0.875rem, 2.5vw, 1rem);
-  color: var(--color-text-secondary);
-  max-width: 500px;
-  margin: 0 auto;
-}
-
+/* Categories Section */
 .categories {
-  padding: var(--space-2) var(--space-1);
-  max-width: 1024px;
-  margin: 0 auto;
+  padding: 4rem 0;
+  background-color: var(--color-background, #f8f9fa);
 }
 
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-2);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .categoryCard {
-  background: var(--color-surface);
-  padding: var(--space-2);
-  border-radius: var(--radius-sm);
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
   text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition-transform);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
   cursor: pointer;
+  border: 1px solid var(--color-border, #e5e7eb);
+  position: relative;
+  overflow: hidden;
+}
+
+.categoryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary, #3b82f6), var(--color-primary-dark, #1d4ed8));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 .categoryCard:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.categoryCard h3 {
-  font-size: clamp(0.875rem, 2.5vw, 1rem);
-  color: var(--color-text);
+.categoryCard:hover::before {
+  transform: scaleX(1);
 }
 
+.categoryTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text, #333);
+  margin-bottom: 0.5rem;
+}
+
+.categoryCount {
+  font-size: 0.875rem;
+  color: var(--color-primary, #3b82f6);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Latest Opportunities Section */
 .latestOpportunities {
-  padding: var(--space-2) var(--space-1);
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
-.latestOpportunities h2 {
-  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-  text-align: center;
+  padding: 4rem 0;
+  background: white;
 }
 
 .opportunitiesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: var(--space-2);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--color-text-secondary, #6b7280);
+}
+
+.emptyState p {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .categoryGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .opportunitiesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: var(--space-2) var(--space-1);
+    padding: 3rem 0;
   }
-
+  
+  .categories,
+  .latestOpportunities {
+    padding: 3rem 0;
+  }
+  
   .categoryGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
-
+  
+  .categoryCard {
+    padding: 1.5rem;
+  }
+  
   .opportunitiesGrid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hero {
+    padding: 2rem 0;
+  }
+  
+  .categories,
+  .latestOpportunities {
+    padding: 2rem 0;
+  }
+  
   .categoryGrid {
     grid-template-columns: 1fr;
+  }
+  
+  .categoryCard {
+    padding: 1.25rem;
+  }
+  
+  .sectionTitle {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* High DPI and Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero::before {
+    transform: scale(2);
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .categoryCard,
+  .categoryCard::before {
+    transition: none;
+  }
+  
+  .categoryCard:hover {
+    transform: none;
+  }
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+  .categories {
+    background-color: var(--color-background-dark, #1f2937);
+  }
+  
+  .categoryCard {
+    background: var(--color-surface-dark, #374151);
+    border-color: var(--color-border-dark, #4b5563);
+  }
+  
+  .latestOpportunities {
+    background: var(--color-background-dark, #111827);
   }
 }
